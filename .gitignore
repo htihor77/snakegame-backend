@@ -1,0 +1,4 @@
+node_modules/
+.env
+secure-connect-snake-game.zip
+.DS_Store
