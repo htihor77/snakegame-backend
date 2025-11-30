@@ -1,7 +1,16 @@
 {
+  "version": 2,
   "functions": {
     "api/*.js": {
-      "includeFiles": "astraApi.js"
+      "includeFiles": [
+        "astraApi.js"
+      ]
     }
-  }
+  },
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/index.js" }
+  ]
 }
