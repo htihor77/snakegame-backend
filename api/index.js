@@ -10,6 +10,27 @@ const astra = require("../astraApi");
 const app = express();
 app.use(bodyParser.json());
 
+
+// top of file
+const cors = require('cors');    // << add this
+
+
+// allow CORS from dev and your deployed frontend
+app.use(cors({
+  origin: [
+    "http://localhost:3000",                         // local dev
+    "https://your-frontend.vercel.app",              // replace with your frontend Vercel domain
+    "https://snakegame-backend-g24u.vercel.app"     // optional if needed
+  ],
+  methods: ["GET","HEAD","PUT","PATCH","POST","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization","Accept","Origin"],
+  credentials: false
+}));
+
+// rest of your middlewares
+app.use(express.json());
+
+
 // Basic validators (same logic as earlier)
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
